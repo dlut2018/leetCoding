@@ -59,8 +59,6 @@ public class P7ReverseInteger{
             System.out.println(i);
         }
 
-
-
         return 0;
     }
 }
