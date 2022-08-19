@@ -66,44 +66,6 @@ public class P92ReverseLinkedListIi{
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
-        //init
-        ListNode p = head;
-        ListNode[] ptemp = new ListNode[right-left+1];
-        ListNode[] ptempHead = new ListNode[right-left+1];
-        int count = 0;
-        int var = 0;
-        int varHead = 0;
-        int statusCode = 0;
-        int statusCodeHead = 0;
-        //遍历
-        while(p != null){
-            count++;
-            if(count == (left)){
-                System.out.println(count);
-                statusCode = 1;
-            }
-            if(count==right){
-                System.out.println(count);
-                statusCode = 0;
-            }
-            if(count == (left-1)){
-                statusCodeHead = 1;
-            }
-            if(count == (right-1)){
-                statusCodeHead = 0;
-            }
-            if(statusCode == 1){
-                ptemp[var]=p;
-                var++;
-            }
-            if(statusCodeHead == 1){
-                ptempHead[varHead]= p;
-                varHead++;
-            }
-            p = p.next;
-        }
-
-        //swap
 
         return head;
     }
