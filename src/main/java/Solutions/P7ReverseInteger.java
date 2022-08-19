@@ -55,6 +55,9 @@ public class P7ReverseInteger{
      */
     class Solution {
     public int reverse(int x) {
+        for(int i=0;i<=100;i++){
+            System.out.println(i);
+        }
         return 0;
     }
 }
