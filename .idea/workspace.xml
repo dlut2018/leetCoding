@@ -69,7 +69,7 @@
       <recent name="D:\leetcode\leetCoding" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.P92ReverseLinkedListIi">
+  <component name="RunManager" selected="Application.P6ZigzagConversion">
     <configuration name="ListUtils" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Utils.ListUtils" />
       <module name="leetCoding" />
@@ -109,11 +109,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.P6ZigzagConversion" />
         <item itemvalue="Application.P92ReverseLinkedListIi" />
         <item itemvalue="Application.ListUtils" />
-        <item itemvalue="Application.P6ZigzagConversion" />
       </list>
     </recent_temporary>
   </component>

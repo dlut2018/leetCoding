@@ -64,7 +64,7 @@ public class P6ZigzagConversion {
     public static void main(String[] args) {
         Solution solution = new P6ZigzagConversion().new Solution();
         // TO TEST
-        String ans = solution.convert("ABcd",1);
+        String ans = solution.convert("ABcfdfasdffd",2);
         System.out.println(ans);
         return;
     }
