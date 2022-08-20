@@ -41,81 +41,96 @@ import Utils.ListUtils;
 import java.util.ArrayList;
 
 //Java：反转链表 II
-public class P92ReverseLinkedListIi{
+public class P92ReverseLinkedListIi {
     public static void main(String[] args) {
         Solution solution = new P92ReverseLinkedListIi().new Solution();
         // TO TEST
-        ArrayList<Integer> integers = new ArrayList<>();
-        for(int i=0;i<=10;i++){
-            integers.add(i);
-        }
+        ArrayList<Integer> integers = new ArrayList<Integer>() {{
+            add(1);
+            add(2);
+            add(3);
+            add(4);
+            add(5);
+        }};
         System.out.println(integers);
-        ListNode h = solution.reverseBetween(ListUtils.createList(integers),2,4);
+        ListNode h = solution.reverseBetween(ListUtils.createList(integers), 2, 2);
         ListUtils.showList(h);
     }
     //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode() {}
- *     ListNode(int val) { this.val = val; }
- *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
- * }
- */
-class Solution {
-    public ListNode reverseBetween(ListNode head, int left, int right) {
-        //init
-        ListNode pLeft = null;
-        ListNode p = head;
-        ListNode pRight = head.next;
-        ListNode start1 = null;
-        ListNode start2 = null;
-        ListNode end1 = null;
-        ListNode end2 = null;
-        int count = 0;
-        int status = 0;
-        //使用三个指针遍历链表，完成翻转
-        while(p != null){
-            count++;
-            //开始反转链表
-            if(count==left){ status=1; }
-            if(status==1){
-                if(count==left){
-                    //第一个位置 记录链表两个断电的地址
-                    start1 = pLeft;
-                    start2 = pRight;
+
+    /**
+     * Definition for singly-linked list.
+     * public class ListNode {
+     * int val;
+     * ListNode next;
+     * ListNode() {}
+     * ListNode(int val) { this.val = val; }
+     * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+     * }
+     */
+    class Solution {
+        public ListNode reverseBetween(ListNode head, int left, int right) {
+            //边界处理
+            if (left == right) {
+                return head;
+            }
+            if (head.next.next == null) {
+                ListNode temp = head;
+                head = head.next;
+                head.next = temp;
+                temp.next = null;
+                return head;
+            }
+            //init
+            ListNode pLeft = null;
+            ListNode p = head;
+            ListNode pRight = head.next;
+            ListNode start1 = null;
+            ListNode start2 = null;
+            int count = 0;
+            int status = 0;
+            //使用三个指针遍历链表，完成翻转
+            while (p != null) {
+                count++;
+                //开始反转链表
+                if (count == left) {
+                    status = 1;
                 }
-                else{
-                    //其他位置 改变链表指针方向
-                    p.next = pLeft;
+                if (status == 1) {
+                    if (count == left) {
+                        //第一个位置 记录链表两个断电的地址
+                        start1 = pLeft;
+                        start2 = p;
+                    } else {
+                        //其他位置 改变链表指针方向
+                        p.next = pLeft;
+                    }
                 }
-            }
-            //结束反转链表
-            if(count==right+1){
-                status=0;
-                if(start1!=null) {
-                    start1.next = p;
-                }else {
-                    head = end1;
+                //结束反转链表
+                if (count == right) {
+                    status = 0;
+                    if (start1 != null) {
+                        start1.next = p;
+                    } else {
+                        head = p;
+                    }
+                    start2.next = pRight;
                 }
-                start2.next = pRight;
+                //使用三个指针遍历链表
+                if (pLeft != null) {
+                    pLeft = p;
+                } else {
+                    pLeft = head;
+                }
+                p = pRight;
+                if (pRight != null) {
+                    pRight = pRight.next;
+                }
+                System.out.println(count);
             }
-            //使用三个指针遍历链表
-            if(pLeft!=null) { pLeft = p; }
-            else { pLeft = head; }
-            p = pRight;
-            if(pRight!=null) {
-                pRight = pRight.next;
-            }
-            if(p!=null) {
-                System.out.println(p.val);
-            }
+            return head;
         }
-        return head;
     }
-}
 //leetcode submit region end(Prohibit modification and deletion)
 
 }
