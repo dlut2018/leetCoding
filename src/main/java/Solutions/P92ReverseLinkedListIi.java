@@ -50,7 +50,7 @@ public class P92ReverseLinkedListIi{
             integers.add(i);
         }
         System.out.println(integers);
-        ListNode h = solution.reverseBetween(ListUtils.createList(integers),3,5);
+        ListNode h = solution.reverseBetween(ListUtils.createList(integers),2,4);
         ListUtils.showList(h);
     }
     //leetcode submit region begin(Prohibit modification and deletion)
@@ -66,32 +66,51 @@ public class P92ReverseLinkedListIi{
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
+        //init
         ListNode pLeft = null;
         ListNode p = head;
         ListNode pRight = head.next;
+        ListNode start1 = null;
+        ListNode start2 = null;
+        ListNode end1 = null;
+        ListNode end2 = null;
         int count = 0;
         int status = 0;
-
-        while(p!=null){
+        //使用三个指针遍历链表，完成翻转
+        while(p != null){
             count++;
             //开始反转链表
             if(count==left){ status=1; }
             if(status==1){
-
+                if(count==left){
+                    //第一个位置 记录链表两个断电的地址
+                    start1 = pLeft;
+                    start2 = pRight;
+                }
+                else{
+                    //其他位置 改变链表指针方向
+                    p.next = pLeft;
+                }
             }
             //结束反转链表
-            if(count==right){ status=0; }
-
+            if(count==right+1){
+                status=0;
+                if(start1!=null) {
+                    start1.next = p;
+                }else {
+                    head = end1;
+                }
+                start2.next = pRight;
+            }
             //使用三个指针遍历链表
-            if(pLeft!=null) {
-                pLeft = pLeft.next; }
-            else {
-                pLeft = head; }
-            p = p.next;
-            if(pRight.next!=null){
-                pRight = pRight.next; }
-            else {
-                pRight = null;
+            if(pLeft!=null) { pLeft = p; }
+            else { pLeft = head; }
+            p = pRight;
+            if(pRight!=null) {
+                pRight = pRight.next;
+            }
+            if(p!=null) {
+                System.out.println(p.val);
             }
         }
         return head;

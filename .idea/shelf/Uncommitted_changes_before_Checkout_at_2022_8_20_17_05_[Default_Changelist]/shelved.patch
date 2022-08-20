@@ -1,0 +1,110 @@
+Index: src/main/java/Solutions/P92ReverseLinkedListIi.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>//给你单链表的头指针 head 和两个整数 left 和 right ，其中 left <= right 。请你反转从位置 left 到位置 right 的链\r\n//表节点，返回 反转后的链表 。\r\n// \r\n//\r\n// 示例 1： \r\n//\r\n// \r\n//输入：head = [1,2,3,4,5], left = 2, right = 4\r\n//输出：[1,4,3,2,5]\r\n// \r\n//\r\n// 示例 2： \r\n//\r\n// \r\n//输入：head = [5], left = 1, right = 1\r\n//输出：[5]\r\n// \r\n//\r\n// \r\n//\r\n// 提示： \r\n//\r\n// \r\n// 链表中节点数目为 n \r\n// 1 <= n <= 500 \r\n// -500 <= Node.val <= 500 \r\n// 1 <= left <= right <= n \r\n// \r\n//\r\n// \r\n//\r\n// 进阶： 你可以使用一趟扫描完成反转吗？ \r\n// Related Topics 链表 \uD83D\uDC4D 1366 \uD83D\uDC4E 0\r\n\r\n\r\npackage Solutions;\r\n\r\nimport Utils.ListNode;\r\nimport Utils.ListUtils;\r\n\r\nimport java.util.ArrayList;\r\n\r\n//Java：反转链表 II\r\npublic class P92ReverseLinkedListIi{\r\n    public static void main(String[] args) {\r\n        Solution solution = new P92ReverseLinkedListIi().new Solution();\r\n        // TO TEST\r\n        ArrayList<Integer> integers = new ArrayList<>();\r\n        for(int i=0;i<=10;i++){\r\n            integers.add(i);\r\n        }\r\n        System.out.println(integers);\r\n        ListNode h = solution.reverseBetween(ListUtils.createList(integers),3,5);\r\n        ListUtils.showList(h);\r\n    }\r\n    //leetcode submit region begin(Prohibit modification and deletion)\r\n/**\r\n * Definition for singly-linked list.\r\n * public class ListNode {\r\n *     int val;\r\n *     ListNode next;\r\n *     ListNode() {}\r\n *     ListNode(int val) { this.val = val; }\r\n *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }\r\n * }\r\n */\r\nclass Solution {\r\n    public ListNode reverseBetween(ListNode head, int left, int right) {\r\n        //init\r\n        ListNode p = head;\r\n        ListNode[] ptemp = new ListNode[right-left+1];\r\n        ListNode[] ptempHead = new ListNode[right-left+1];\r\n        int count = 0;\r\n        int var = 0;\r\n        int varHead = 0;\r\n        int statusCode = 0;\r\n        int statusCodeHead = 0;\r\n        //遍历\r\n        while(p != null){\r\n            count++;\r\n            if(count == (left)){\r\n                System.out.println(count);\r\n                statusCode = 1;\r\n            }\r\n            if(count==right){\r\n                System.out.println(count);\r\n                statusCode = 0;\r\n            }\r\n            if(count == (left-1)){\r\n                statusCodeHead = 1;\r\n            }\r\n            if(count == (right-1)){\r\n                statusCodeHead = 0;\r\n            }\r\n            if(statusCode == 1){\r\n                ptemp[var]=p;\r\n                var++;\r\n            }\r\n            if(statusCodeHead == 1){\r\n                ptempHead[varHead]= p;\r\n                varHead++;\r\n            }\r\n            p = p.next;\r\n        }\r\n\r\n        //swap\r\n\r\n        return head;\r\n    }\r\n}\r\n//leetcode submit region end(Prohibit modification and deletion)\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/Solutions/P92ReverseLinkedListIi.java b/src/main/java/Solutions/P92ReverseLinkedListIi.java
+--- a/src/main/java/Solutions/P92ReverseLinkedListIi.java	(revision 029b3c6db7623b55e979a47ea85b02a61d4e220e)
++++ b/src/main/java/Solutions/P92ReverseLinkedListIi.java	(date 1660904371770)
+@@ -67,45 +67,14 @@
+ class Solution {
+     public ListNode reverseBetween(ListNode head, int left, int right) {
+         //init
+-        ListNode p = head;
+-        ListNode[] ptemp = new ListNode[right-left+1];
+-        ListNode[] ptempHead = new ListNode[right-left+1];
+-        int count = 0;
+-        int var = 0;
+-        int varHead = 0;
+-        int statusCode = 0;
+-        int statusCodeHead = 0;
+-        //遍历
+-        while(p != null){
+-            count++;
+-            if(count == (left)){
+-                System.out.println(count);
+-                statusCode = 1;
+-            }
+-            if(count==right){
+-                System.out.println(count);
+-                statusCode = 0;
+-            }
+-            if(count == (left-1)){
+-                statusCodeHead = 1;
+-            }
+-            if(count == (right-1)){
+-                statusCodeHead = 0;
+-            }
+-            if(statusCode == 1){
+-                ptemp[var]=p;
+-                var++;
+-            }
+-            if(statusCodeHead == 1){
+-                ptempHead[varHead]= p;
+-                varHead++;
+-            }
+-            p = p.next;
+-        }
++        ListNode pRight=  null;
++        ListNode p = head.next;
++        ListNode pLeft = head.next.next;
++
+ 
+-        //swap
++
+ 
+-        return head;
++       return head;
+     }
+ }
+ //leetcode submit region end(Prohibit modification and deletion)
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4e329e76-eb59-4bd8-b53b-5ee23c257aac\" name=\"Default Changelist\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitToolBoxStore\">\r\n    <option name=\"recentBranches\">\r\n      <RecentBranches>\r\n        <option name=\"branchesForRepo\">\r\n          <list>\r\n            <RecentBranchesForRepo>\r\n              <option name=\"branches\">\r\n                <list>\r\n                  <RecentBranch>\r\n                    <option name=\"branchName\" value=\"main\" />\r\n                    <option name=\"lastUsedInstant\" value=\"1660710390\" />\r\n                  </RecentBranch>\r\n                  <RecentBranch>\r\n                    <option name=\"branchName\" value=\"master\" />\r\n                    <option name=\"lastUsedInstant\" value=\"1660710389\" />\r\n                  </RecentBranch>\r\n                </list>\r\n              </option>\r\n              <option name=\"repositoryRootUrl\" value=\"file://$PROJECT_DIR$\" />\r\n            </RecentBranchesForRepo>\r\n          </list>\r\n        </option>\r\n      </RecentBranches>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2DSzhMuzkc5Wg7H3kyv8sxTJYdi\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/java/Solutions\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"settings.editor.selected.configurable\" value=\"project.propVCSSupport.Mappings\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\leetcode\\leetCoding\\src\\main\\java\\Solutions\" />\r\n      <recent name=\"D:\\leetcode\\leetCoding\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.P92ReverseLinkedListIi\">\r\n    <configuration name=\"ListUtils\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Utils.ListUtils\" />\r\n      <module name=\"leetCoding\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Utils.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"P6ZigzagConversion\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Solutions.P6ZigzagConversion\" />\r\n      <module name=\"leetCoding\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Solutions.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"P92ReverseLinkedListIi\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"Solutions.P92ReverseLinkedListIi\" />\r\n      <module name=\"leetCoding\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"Solutions.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.P92ReverseLinkedListIi\" />\r\n        <item itemvalue=\"Application.ListUtils\" />\r\n        <item itemvalue=\"Application.P6ZigzagConversion\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4e329e76-eb59-4bd8-b53b-5ee23c257aac\" name=\"Default Changelist\" comment=\"\" />\r\n      <created>1660707393522</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1660707393522</updated>\r\n      <workItem from=\"1660707394837\" duration=\"3721000\" />\r\n      <workItem from=\"1660733710687\" duration=\"9556000\" />\r\n      <workItem from=\"1660788562940\" duration=\"41000\" />\r\n      <workItem from=\"1660879089414\" duration=\"1710000\" />\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State>\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"origin/main\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 029b3c6db7623b55e979a47ea85b02a61d4e220e)
++++ b/.idea/workspace.xml	(date 1660968265823)
+@@ -5,7 +5,9 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="4e329e76-eb59-4bd8-b53b-5ee23c257aac" name="Default Changelist" comment="">
++      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/Solutions/P92ReverseLinkedListIi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Solutions/P92ReverseLinkedListIi.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -129,6 +131,10 @@
+       <workItem from="1660733710687" duration="9556000" />
+       <workItem from="1660788562940" duration="41000" />
+       <workItem from="1660879089414" duration="1710000" />
++      <workItem from="1660882156265" duration="229000" />
++      <workItem from="1660887399243" duration="76000" />
++      <workItem from="1660904148534" duration="222000" />
++      <workItem from="1660968255025" duration="8000" />
+     </task>
+     <servers />
+   </component>
+@@ -146,7 +152,7 @@
+                   <entry key="branch">
+                     <value>
+                       <list>
+-                        <option value="origin/main" />
++                        <option value="main" />
+                       </list>
+                     </value>
+                   </entry>
+@@ -157,5 +163,6 @@
+         </entry>
+       </map>
+     </option>
++    <option name="oldMeFiltersMigrated" value="true" />
+   </component>
+ </project>
+\ No newline at end of file
