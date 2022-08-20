@@ -66,7 +66,34 @@ public class P92ReverseLinkedListIi{
  */
 class Solution {
     public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode pLeft = null;
+        ListNode p = head;
+        ListNode pRight = head.next;
+        int count = 0;
+        int status = 0;
 
+        while(p!=null){
+            count++;
+            //开始反转链表
+            if(count==left){ status=1; }
+            if(status==1){
+
+            }
+            //结束反转链表
+            if(count==right){ status=0; }
+
+            //使用三个指针遍历链表
+            if(pLeft!=null) {
+                pLeft = pLeft.next; }
+            else {
+                pLeft = head; }
+            p = p.next;
+            if(pRight.next!=null){
+                pRight = pRight.next; }
+            else {
+                pRight = null;
+            }
+        }
         return head;
     }
 }
